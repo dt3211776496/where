@@ -8,6 +8,22 @@ export async function POST(request: Request) {
   try {
     const { key, targetUrl } = await request.json();
     
+    // 验证输入参数
+    if (!key || !targetUrl) {
+      return NextResponse.json(
+        { error: '缺少必要参数' },
+        { status: 400 }
+      );
+    }
+
+    // 检查环境变量
+    if (!process.env.NEXT_PUBLIC_BASE_URL) {
+      return NextResponse.json(
+        { error: '服务器配置错误' },
+        { status: 500 }
+      );
+    }
+
     // 生成唯一的追踪ID
     const trackingId = crypto.randomBytes(8).toString('hex');
     

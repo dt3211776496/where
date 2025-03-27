@@ -41,7 +41,7 @@ export async function GET(
       where: { id: params.id },
       data: {
         visits: {
-          push: {
+          create: {
             timestamp: new Date(),
             ip,
             location
@@ -59,4 +59,4 @@ export async function GET(
       { status: 500 }
     );
   }
-} 
+}
