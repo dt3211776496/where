@@ -1,4 +1,4 @@
-# Met.red Demo
+# where Demo
 
 这是一个用于教育目的的链接追踪模仿met.red的系统演示项目。该项目展示了如何创建和追踪特殊的重定向链接，用于记录访问者的IP地址和地理位置信息。
 
@@ -16,7 +16,7 @@
 - TypeScript
 - Tailwind CSS
 - Prisma
-- Supabase
+- supabase
 - Vercel
 
 ## 开始使用

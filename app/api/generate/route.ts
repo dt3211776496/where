@@ -17,7 +17,9 @@ export async function POST(request: Request) {
         id: trackingId,
         key,
         targetUrl,
-        visits: []
+        visits: {
+          create: []
+        }
       }
     });
     
@@ -32,4 +34,4 @@ export async function POST(request: Request) {
       { status: 500 }
     );
   }
-} 
+}
