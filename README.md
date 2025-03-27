@@ -1,6 +1,6 @@
 # Met.red Demo
 
-这是一个用于教育目的的链接追踪系统演示项目。该项目展示了如何创建和追踪特殊的重定向链接，用于记录访问者的IP地址和地理位置信息。
+这是一个用于教育目的的链接追踪模仿met.red的系统演示项目。该项目展示了如何创建和追踪特殊的重定向链接，用于记录访问者的IP地址和地理位置信息。
 
 ## 功能特点
 
@@ -16,14 +16,14 @@
 - TypeScript
 - Tailwind CSS
 - Prisma
-- MongoDB
+- Supabase
 - Vercel
 
 ## 开始使用
 
 1. 克隆项目：
    ```bash
-   git clone https://github.com/yourusername/met-red-demo.git
+   git clone https://github.com/dt3211776496/where.git
    cd met-red-demo
    ```
 
@@ -34,7 +34,7 @@
 
 3. 配置环境变量：
    - 复制 `.env.example` 到 `.env`
-   - 更新 MongoDB 连接字符串
+   - 更新 supabase 连接字符串
    - 设置 `NEXT_PUBLIC_BASE_URL`
 
 4. 初始化数据库：
