@@ -3,26 +3,32 @@ import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
-export async function POST(request: Request) {
+export async function GET() {
   try {
-    // 删除所有过期的记录
-    const result = await prisma.tracking.deleteMany({
+    // 删除3天前的访问记录
+    const threeDaysAgo = new Date();
+    threeDaysAgo.setDate(threeDaysAgo.getDate() - 3);
+
+    await prisma.visit.deleteMany({
       where: {
-        expiresAt: {
-          lt: new Date()
+        timestamp: {
+          lt: threeDaysAgo
         }
       }
     });
 
-    return NextResponse.json({
-      message: `已删除 ${result.count} 条过期记录`,
-      deletedCount: result.count
+    // 删除没有访问记录的追踪链接
+    await prisma.tracking.deleteMany({
+      where: {
+        visits: {
+          none: {}
+        }
+      }
     });
+
+    return NextResponse.json({ success: true });
   } catch (error) {
-    console.error('清理过期数据时发生错误:', error);
-    return NextResponse.json(
-      { error: '清理过期数据时发生错误' },
-      { status: 500 }
-    );
+    console.error('Cleanup error:', error);
+    return NextResponse.json({ error: '清理失败' }, { status: 500 });
   }
 } 
