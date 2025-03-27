@@ -1,19 +1,9 @@
 'use client';
 
-import { useState, FormEvent, ChangeEvent } from 'react';
+import { useState, useEffect, FormEvent, ChangeEvent } from 'react';
 import axios from 'axios';
 import dynamic from 'next/dynamic';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
-
-// 修复Leaflet默认图标问题
-delete (L.Icon.Default.prototype as any)._getIconUrl;
-L.Icon.Default.mergeOptions({
-  iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png',
-  iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
-  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
-});
 
 // 动态导入地图组件
 const Map = dynamic(() => import('./components/Map'), { ssr: false });
@@ -26,6 +16,7 @@ interface Visit {
 }
 
 export default function Home() {
+
   const [key, setKey] = useState('');
   const [targetUrl, setTargetUrl] = useState('');
   const [trackingUrl, setTrackingUrl] = useState('');
@@ -171,4 +162,4 @@ export default function Home() {
       </div>
     </main>
   );
-} 
+}
