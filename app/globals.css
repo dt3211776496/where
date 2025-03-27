@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 17, 24, 39;
+  --background-end-rgb: 31, 41, 55;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+    to bottom,
+    rgb(var(--background-start-rgb)),
+    rgb(var(--background-end-rgb))
+  );
+  min-height: 100vh;
+}
+
+/* 自定义滚动条样式 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* 地图容器样式 */
+.leaflet-container {
+  background: #1f2937;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+/* 输入框样式 */
+input {
+  @apply bg-gray-700 border-gray-600 text-white placeholder-gray-400;
+}
+
+input:focus {
+  @apply ring-2 ring-blue-500 border-blue-500;
+}
+
+/* 按钮样式 */
+button {
+  @apply transition-all duration-200 ease-in-out;
+}
+
+button:disabled {
+  @apply opacity-50 cursor-not-allowed;
+}
+
+/* 卡片样式 */
+.card {
+  @apply bg-gray-800 rounded-xl shadow-lg p-6;
+  backdrop-filter: blur(10px);
+  background-color: rgba(31, 41, 55, 0.8);
+} 

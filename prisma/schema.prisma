@@ -1,0 +1,24 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+type Visit {
+  timestamp DateTime
+  ip        String
+  location  String
+}
+
+model Tracking {
+  id        String   @id @default(cuid())
+  key       String
+  targetUrl String
+  visits    Visit[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  expiresAt DateTime @default(dbgenerated("CURRENT_TIMESTAMP + INTERVAL '3 days'"))
+} 
